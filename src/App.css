@@ -1,0 +1,404 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Space+Grotesk:wght@300..700&display=swap');
+
+
+
+/**GENERAL**/
+/** GENERAL ELEMENTS START **/
+@theme {
+  --color-*: initial;
+  --color-lavender-50: #dfdee8;
+  --color-lavender-100: #d0cfde;
+  --color-lavender-150: #b9b7cd;
+  --color-lavender-200: #9693b4;
+  --color-darkblue-50: #676392;
+  --color-darkblue-100: #4d4a6d;
+  --color-darkblue-150: #343249;
+  --color-darkblue-200: #181722;
+  --color-purple-50: #6c31d8;
+  --color-purple-100: #3f1985;
+  --color-scarlet-50: #b83244;
+}
+
+@layer base {
+  *,
+    *::before,
+    *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Tomorrow", sans-serif;
+    color: #181722;
+    font-weight: 500;
+  }
+  h1 {font-size: 2.5rem; line-height: 1.25;}
+  h2 {font-size: 2rem;}
+  h3 {font-size: 1.75rem;}
+  h4 {font-size: 1.5rem;}
+  h5 {font-size: 1.25rem;}
+  h6 {font-size: 1rem;}
+  a{ cursor: pointer; text-decoration: none;}
+  p, a, ul, li {
+    font-family: "Space Grotesk", sans-serif;
+    color: #181722;
+  }
+  p { font-size: 1.25rem; font-weight: 300; line-height: 1.75;}
+  b {font-weight: 600;}
+  fieldset {
+  border: #181722 solid 0.12rem;
+  padding: 1rem;
+}
+  legend {
+  border: #181722 solid 0.1rem;
+  padding-inline: 1rem;
+  background-color: #181722;
+  color: #dfdee8;
+}
+}
+
+@utility h-screen {  
+  height: 90vh;
+}
+
+@utility h-halfscreen {  
+  height: 45vh;
+}
+
+@utility reverse{
+  transform: scale(-1, 1);
+}
+
+@utility grid-bg{
+  background-image: linear-gradient(#9693b4 .01em, transparent .1em), linear-gradient(90deg, #9693b4 .01em, transparent .1em);
+  background-size: 6.0em 6.0em;
+  box-shadow: inset 0 0 0 2rem #dfdee8;
+}
+
+@utility halftone-bg {
+  background-image: radial-gradient(#1817224c 1px, transparent 0);
+  background-size: 2rem 2rem;
+  background-position: 2rem 2rem;
+}
+
+.wipe-anim{
+  height: fit-content;
+  transform: scaleX(0);
+  animation: wipe-anim 500ms linear;
+  height: 60vh;
+  overflow: hidden;
+}
+
+@keyframes wipe-anim {
+  0% {background: #181722; transform-origin: left; transform: scaleX(0);}
+  25% {background: #181722; transform-origin: left; transform: scaleX(1);}
+  75% {background: #181722; transform-origin: right; transform: scaleX(1);}
+  100% {background: #181722; transform-origin: right; transform: scaleX(0);}
+}
+
+.hazard-background-x {
+  height: 1rem;
+  width: 30rem;
+  margin: 5%;
+  margin-right: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5%,
+    #181722 5%,
+    #181722 20%
+  );
+}
+
+.hazard-background-thin-x {
+  height: 1.5rem;
+  width: 20vw;
+  margin-right: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #181722,
+    #181722 0.5%,
+    transparent 0.5%,
+    transparent 5%
+  );
+  align-self: center;
+}
+
+.hazard-background-y {
+  height: 70vh;
+  width: 4rem;
+  margin: 5%;
+  margin-right: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 5%,
+    #181722 5%,
+    #181722 20%
+  );
+}
+
+.hazard-background-thin-y {
+  width: 4rem;
+  margin-right: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #181722,
+    #181722 1%,
+    transparent 1%,
+    transparent 5%
+  );
+  align-self: center;
+}
+
+.barblock1 {
+  background: linear-gradient(to right,#181722 65%,transparent 30% 75%,#181722 50% 75%,#181722 75%);
+  width: clamp(4rem, 8rem, 12rem);
+  height: clamp(1rem, 2rem, 3rem);
+  display: inline-block;
+}
+
+.barblock2{
+  background: #181722;
+  width: 6rem;
+  height: 3rem;
+}
+
+.numsection{
+  font-size: 5rem;
+  font-weight: 700;
+  color: #181722;
+}
+
+.corner-only {
+  --s: 2rem; /* size of the corners */
+  border: 8px solid #181722;
+  padding: 0.5rem;
+  mask: 
+    conic-gradient(#181722 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#181722 0) 
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));
+}
+
+.corner-only-nowrap {
+  --s: 2rem; /* size of the corners */
+  border: 8px solid #181722; 
+  padding: clamp(1rem, 2rem, 5vh);
+  max-height: clamp(50%, 60vh, 60vh);
+  mask: 
+    conic-gradient(#181722 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#181722 0) 
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));
+}
+
+.text-image{
+  font-size: clamp(90%, 10.5vw, 12rem);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.max-width{
+  max-width: 100rem;
+}
+
+.halftone {
+  background-image: radial-gradient(
+      circle at center,
+      transparent 0
+    ), radial-gradient(circle at center, black 0.1rem, transparent 0);
+  background-size: 1.6rem 1.6rem;
+  background-position: 0 0, 0.65rem 0.65rem;
+  position: absolute;
+}
+
+.project-img{
+  width: clamp(90%, 100%, 100%);
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.3s;
+  border-radius: 0.25rem;
+}
+
+.zoom-img{
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.zoom-img img:hover{
+  transform: scale(1.05);
+}
+
+/** GENERAL ELEMENTS END **/
+
+
+/** NAVIGATION BAR START **/
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-content: center;
+  padding: 2rem 6rem;
+  height: 5.5rem;
+  font-size: 1rem;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.cta {
+  color: #dfdee8;
+  background-color: #6c31d8;
+  border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  align-self: center;
+  font-weight: 600;
+  transition: 0.15s ease;
+}
+
+.cta:hover{background-color: #3f1985;}
+
+.logo {
+  color: #dfdee8;
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+.nav_links{
+  list-style: none;
+}
+
+.nav_links li {
+  display: inline-block;
+  padding: 0 2rem;
+}
+
+.nav_links li a {color: #dfdee8; transition: 0.15s ease;}
+
+.nav_links li a:hover {color: #6c31d8;}
+
+/* ABOUT START */
+.about-start{
+  border-bottom: solid 4px #181722;
+  box-shadow: 0.5rem 0 0.5rem #181722;
+  position: relative;
+}
+
+.intro-text{width: clamp(50%, 60%, 90%);}
+
+.intro-text p{font-size: 1.15rem; font-weight: 300;}
+
+.intro-text a{font-size: 1.15rem; font-weight: 500; color: #6c31d8;}
+
+.about-section {
+  border: solid #9693b4 1px;
+  width: 100%;
+  height: 50rem;
+  padding: 5.5rem;
+}
+/* ABOUT END */
+
+/* FOOTER START */
+
+.emailcontact{
+  padding: 2rem;
+}
+
+.inputemail{
+  border: 0.15rem solid #181722;
+  border-radius: 0.30rem;
+  padding: 0.65rem;
+  width: clamp(90%, 20rem, 25rem);
+  font-family: "Space Grotesk", sans-serif;
+  color: #181722;
+  outline: none;
+  margin-block: 0.25rem;
+}
+
+.inputtextareacontainer{
+  border: 0.15rem solid #181722;
+  border-radius: 0.30rem;
+  width: clamp(90%, 20rem, 25rem);
+  height: 15vh;
+  color: #181722;
+  margin-block: 1rem;
+}
+
+.inputtextarea{
+  border: 0.15rem solid transparent;
+  border-radius: 0.30rem;
+  padding-inline: 0.5rem;
+  width: clamp(80%, 10rem, 25rem);
+  height: 10vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: #181722;
+  outline: none;
+  margin-block: 1rem;
+  resize: none;
+}
+
+.inputtextareabutton{
+  color: #b9b7cd;
+  background-color: #6c31d8;
+  border-radius: 0.5rem;
+  padding: 0.30rem 0.75rem;
+  align-self: center;
+  font-weight: 600;
+  margin-block: 1rem;
+  position: absolute;
+  transition: 0.1s ease;
+}
+
+.inputtextareabutton:hover{background-color: #3f1985;}
+
+.scrollhidden{overflow: hidden;}
+
+.scrollhidden::-webkit-scrollbar {display: none;}
+
+::placeholder {color: #181722; opacity: 0.8;}
+
+.border-image{border-right: 0.5rem solid #181722; height: 100%;}
+
+.footerimg{
+  align-self: flex-end;
+  height: 15rem;
+  max-height: 30rem;
+}
+
+.contact{
+  padding: 2rem;
+  border-left: 0.15rem solid #9693b4;
+}
+
+.contactlink{
+  display: flex;
+  align-content: center;
+}
+
+.contactlink p{  font-weight: 600; line-height: normal; font-size: 1.15rem;}
+
+/* FOOTER END */
+
+/* MOBILE VIEW START */
+@media only screen and (max-width: 1150px) {
+  header{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .about-section {
+  width: 100%;
+  padding: 2rem;
+}
+
+  .intro-text{width: 90%;}
+}
+/* MOBILE VIEW END */
+
+
+/** NAVIGATION BAR END **/
